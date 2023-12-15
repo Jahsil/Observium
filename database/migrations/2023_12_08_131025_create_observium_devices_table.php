@@ -19,6 +19,9 @@ return new class extends Migration
             $table->bigInteger('observium_port_id')->nullable();
             $table->timestamps();
         });
+        Schema::table('observium_devices', function (Blueprint $table) {
+            $table->index(['device_name', 'observium_port_id']);
+        });
     }
 
     /**
