@@ -34,7 +34,7 @@ Route::prefix('v1')->group(function (){
         Route::get('/show_device/{name}' , [ObserviumController::class , 'show']);
         Route::put('/update_device/{name}', [ObserviumController::class , 'update']);
         Route::delete('/delete_device/{name}' , [ObserviumController::class , 'destroy']);
-        Route::post('/sign_out', [ObserviumController::class , 'signOut']);
+        Route::post('/sign_out', [AuthController::class , 'signOut']);
 
     });    
 });

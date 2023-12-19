@@ -11,7 +11,7 @@ class ObserviumController extends Controller
     //
     public function getDevices(){
 
-        $device = DB::table('observium_devices')->get();
+        $device = DB::table('test_observium_devices')->get();
         return response()->json([
             "status" => "OK",
             "result" => $device
