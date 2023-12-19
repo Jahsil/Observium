@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CsvController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ObserviumController;
+use App\Http\Controllers\FakeStoreController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -36,9 +39,11 @@ Route::prefix('v1')->group(function (){
         Route::delete('/delete_device/{name}' , [ObserviumController::class , 'destroy']);
         Route::post('/sign_out', [AuthController::class , 'signOut']);
 
+        
     });    
 });
 
+Route::get('/get_items', [FakeStoreController::class , 'index']);
 // Route::prefix('v1')->group(function () {
 //     Route::middleware(['jwt.verify'])->group(function () {
 //         Route::get('/index', [ObserviumController::class, 'index']);
