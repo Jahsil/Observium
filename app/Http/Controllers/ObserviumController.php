@@ -31,7 +31,7 @@ class ObserviumController extends Controller
     public function store(Request $request){
         $request_name = $request->device_name;
         $is_valid_name = Device::where("device_name",$request_name)->first();
-        // dd($is_valid_name == null);
+        // dd($is_valid_name);
         if ($is_valid_name !== null){
             $response = [
                 "status" => "Failed",
@@ -41,11 +41,12 @@ class ObserviumController extends Controller
         }
         $validatedData = $request->validate([
             'site' => 'required|string',
+            'site_id' => 'required|numeric'
             'device_name' => 'required|string|unique:test_observium_devices',
             'bandwidth' => 'required|numeric',
             'observium_device_id' => 'nullable|integer',
             'observium_port_id' => 'nullable|integer',
-        ]);
+        ]); 
 
         $device = Device::create($validatedData);
         $response = [
@@ -92,6 +93,7 @@ class ObserviumController extends Controller
 
         $validatedData = $request->validate([
             'site' => 'required|string',
+            'site_id' => 'required|numeric'
             'device_name' => 'required|string',
             'bandwidth' => 'required|numeric',
             'observium_device_id' => 'nullable|integer',

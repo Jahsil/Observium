@@ -28,9 +28,10 @@ Route::get('/parseCsv' , [CsvController::class , 'parseCsv']);
 Route::get('/get_devices' , [ObserviumController::class , 'getDevices']);
 Route::post("/sign_up", [AuthController::class , 'signUp']);
 Route::post("/sign_in", [AuthController::class , 'signIn']);
+Route::get('/get_items', [FakeStoreController::class , 'index']);
+Route::get('/users_list', [AuthController::class , 'usersList']);
 
-
-Route::prefix('v1')->group(function (){
+Route::prefix('v1')->group(function (){ 
     Route::middleware(['jwt.verify'])->group(function () {
         Route::get('/index' , [ObserviumController::class , 'index']);
         Route::post('/add_device' , [ObserviumController::class , 'store']);
@@ -43,7 +44,7 @@ Route::prefix('v1')->group(function (){
     });    
 });
 
-Route::get('/get_items', [FakeStoreController::class , 'index']);
+
 // Route::prefix('v1')->group(function () {
 //     Route::middleware(['jwt.verify'])->group(function () {
 //         Route::get('/index', [ObserviumController::class, 'index']);

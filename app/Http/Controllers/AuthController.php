@@ -56,12 +56,13 @@ class AuthController extends Controller
 
         $token = JWTAuth::claims([
             "username" => $request->input('username'),
-            "email" => $request->input('email')
+            "role" => "Engineering" 
         ])->attempt($credentials);
         
-
+        
         $cookie = Cookie::make('token', $token, 60);
         $user = Auth::user();
+        Auth::login($user);
 
         $response = [
             "status" => "OK",
@@ -72,6 +73,18 @@ class AuthController extends Controller
         return response()->json($response , 200)->withCookie(cookie('token', $token, 60));
         
 
+    }
+
+    public function usersList(Request $request){
+        try {
+            $users = User::all();
+            return response()->json([
+                'message' => 'Users List',
+                'users' => $users,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'No users'], 500);
+        }
     }
 
     public function signOut(Request $request){

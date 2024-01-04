@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // ...
         'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
+        'checkRole' => \App\Http\Middleware\CheckRole::class
     ];
 }

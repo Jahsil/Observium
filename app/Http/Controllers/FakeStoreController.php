@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use GuzzleHttp\Client; 
 // use GuzzleHttp\Client;
-use GuzzleHttp\Client;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FakeStoreController extends Controller
 {
     //
-    public function index(){
+    public function index(Request $request){
+
+        $user = Auth::guard('api')->user();
+        $token = $user->accessToken;
+
+        $token = $request->bearerToken();
+        $jwtAuth = app('tymon.jwt.auth');
+        $payload = $jwtAuth->parseToken()->getPayload();
+        dd(auth()->user()->bearerToken);
+
+   
+
         $client = new Client(['verify' => false]);
         $response = $client->request('GET', 'https://fakestoreapi.com/products');
         $products = json_decode($response->getBody());

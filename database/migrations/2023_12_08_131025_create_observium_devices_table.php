@@ -11,7 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('observium_devices', function (Blueprint $table) {
+        Schema::create('test_observium_devices', function (Blueprint $table) {
+            $table->bigInteger('site_id');
             $table->string('site');
             $table->string('device_name')->primary();
             $table->double('bandwidth');
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->bigInteger('observium_port_id')->nullable();
             $table->timestamps();
         });
-        Schema::table('observium_devices', function (Blueprint $table) {
+        Schema::table('test_observium_devices', function (Blueprint $table) {
             $table->index(['device_name', 'observium_port_id']);
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('observium_devices');
+        Schema::dropIfExists('test_observium_devices');
     }
 };

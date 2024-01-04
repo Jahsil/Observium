@@ -1,39 +1,39 @@
 Site,Devices,Allocated BW (Mbps),Average BW (Mbps),Utilization (%),Peak BW (Mbps),Peak Duration (min),Comment,Interface Links to TLG
-9th Police Station (BahirDar),csw-psc-01,  30 ,0,0%,0,0,,http://10.10.11.23/device/device=208/tab=port/port=8400/
-Abay Mado Condo (BahirDar),csw-abm-01,  30 ,0,0%,0,0,,http://10.10.11.23/device/device=209/tab=port/port=8411/
+9th Police Station Condominium,csw-psc-01,  30 ,0,0%,0,0,,http://10.10.11.23/device/device=208/tab=port/port=8400/
+Abay Mado Condominium,csw-abm-01,  30 ,0,0%,0,0,,http://10.10.11.23/device/device=209/tab=port/port=8411/
 Alpha apartment,rtr-alp-01,  100 ,6.47,6.47%,33.27,10,,http://10.10.11.23/device/device=282/tab=port/port=13027/
-Alpharas Real Estate,rtr-alr-01,  42 ,2.65,6.31%,10.19,10,,http://10.10.11.23/device/device=221/tab=port/port=8883/
+Alpharas Apartment,rtr-alr-01,  42 ,2.65,6.31%,10.19,10,,http://10.10.11.23/device/device=221/tab=port/port=8883/
 Ayat Beshale,csw-a5y-01,  15 ,,,,,,
-Ayat Real Estate zone 8,ayt-rtr-01,  34 ,5.53,16.26%,25.94,10,,http://10.10.11.23/device/device=36/tab=port/port=1134/
-Ayat Tafo Condo,ncs5k-atf-01 10G Link,"  6,140 ","3,240",52.77%,"  6,620 ",10,,http://10.10.11.23/device/device=243/tab=port/port=12909/
-Bahirdar Office,olt-bdo-01,  20 ,7.72,38.60%,  21 ,10,,http://10.10.11.23/device/device=170/tab=port/port=5710/
-Basha wolde chilot condo,csw-bwc-01,  50 ,5.28,10.56%,22.84,10,,http://10.10.11.23/device/device=229/tab=port/port=9387/
-Berta Real Estate,csw-brt-01,  60 ,20.58,34.30%,60.42,10,,http://10.10.11.23/device/device=142/tab=port/port=4589/
-Bole Bulbula Condo,csw-bbc-01 Link-1,  550 ,266.34,48.43%,453.94,240,,http://10.10.11.23/device/device=214/tab=port/port=8493/
-Bole Bulbula Condo,csw-bbc-01 Link-2,  450 ,144.85,32.19%,373.94,240,,http://10.10.11.23/device/device=214/tab=port/port=8495/
-Bole Tower,asw-blt-01,  25 ,1.33,5.32%,16.2,2,,http://10.10.11.23/device/device=236/tab=port/port=9764/
-Boran Multi-Complex,bor-csw-01,  20 ,8.74,43.70%,20.53,10,,http://10.10.11.23/device/device=79/tab=port/port=2149/
+Ayat Real Estate Zone-8,ayt-rtr-01,  34 ,5.53,16.26%,25.94,10,,http://10.10.11.23/device/device=36/tab=port/port=1134/
+Ayat Tafo Condominium,ncs5k-atf-01 10G Link,"  6,140 ","3,240",52.77%,"  6,620 ",10,,http://10.10.11.23/device/device=243/tab=port/port=12909/
+Bahr Dar Office,olt-bdo-01,  20 ,7.72,38.60%,  21 ,10,,http://10.10.11.23/device/device=170/tab=port/port=5710/
+Basha Wolde Condominium,csw-bwc-01,  50 ,5.28,10.56%,22.84,10,,http://10.10.11.23/device/device=229/tab=port/port=9387/
+Berta Real State,csw-brt-01,  60 ,20.58,34.30%,60.42,10,,http://10.10.11.23/device/device=142/tab=port/port=4589/
+Bole Bulbula Condominium,csw-bbc-01 Link-1,  550 ,266.34,48.43%,453.94,240,,http://10.10.11.23/device/device=214/tab=port/port=8493/
+Bole Bulbula Condominium,csw-bbc-01 Link-2,  450 ,144.85,32.19%,373.94,240,,http://10.10.11.23/device/device=214/tab=port/port=8495/
+Bole Towers,asw-blt-01,  25 ,1.33,5.32%,16.2,2,,http://10.10.11.23/device/device=236/tab=port/port=9764/
+Boran Real Estate,bor-csw-01,  20 ,8.74,43.70%,20.53,10,,http://10.10.11.23/device/device=79/tab=port/port=2149/
 Girar Condominium,csw-gir-01,  40 ,22.75,56.88%,41.2,10,,http://10.10.11.23/device/device=172/tab=port/port=5802/
-Gotera Condominium,got-rtr-01,  37 ,5.94,16.05%,29.25,10,,http://10.10.11.23/device/device=37/tab=port/port=1154/
-Gurdshola,gur-rtr-01,  10 ,,,,,,
+Gotera,got-rtr-01,  37 ,5.94,16.05%,29.25,10,,http://10.10.11.23/device/device=37/tab=port/port=1154/
+Gurd Shola,gur-rtr-01,  10 ,,,,,,
 Harambe,csw-hrm-01,  10 ,0.29678,2.97%,10.07,10,,http://10.10.11.23/device/device=139/tab=port/port=4525/
-"ICRC,Addis Ababa",icrc-rtr-01,  100 ,2.18,2.18%,31.11,0,,http://10.10.11.23/device/device=40/tab=port/port=1195/
-Kality Condominium,csw-kal-01,  87 ,20.47,23.53%,78.36,10,,http://10.10.11.23/device/device=145/tab=port/port=4705/
-KB academy,kba-rtr-01,  25 ,4.28,17.12%,17.35,10,,http://10.10.11.23/device/device=116/tab=port/port=3805/
+ICRC,icrc-rtr-01,  100 ,2.18,2.18%,31.11,0,,http://10.10.11.23/device/device=40/tab=port/port=1195/
+Kality 40-60 Condominium,csw-kal-01,  87 ,20.47,23.53%,78.36,10,,http://10.10.11.23/device/device=145/tab=port/port=4705/
+KB Acadamy,kba-rtr-01,  25 ,4.28,17.12%,17.35,10,,http://10.10.11.23/device/device=116/tab=port/port=3805/
 Kenteri Condominium,csw-ken-01,  60 ,37.04,61.73%,62.17,15,,http://10.10.11.23/device/device=185/tab=port/port=6579/
 Lideta Condominium,csw-ltc-01,  50 ,15.75,31.50%,40.7,10,,http://10.10.11.23/device/device=155/tab=port/port=5009/
-Micky Leland,csw-mkl-01,  40 ,24.82,62.05%,40.53,10,,http://10.10.11.23/device/device=141/tab=port/port=4571/
-Nicholas Building,rtr-ncl-01,  10 ,0.00278,0.03%,0.00317,10,,http://10.10.11.23/device/device=189/tab=port/port=6666/
+Micky Leland Condominium,csw-mkl-01,  40 ,24.82,62.05%,40.53,10,,http://10.10.11.23/device/device=141/tab=port/port=4571/
+Nicholas Towers,rtr-ncl-01,  10 ,0.00278,0.03%,0.00317,10,,http://10.10.11.23/device/device=189/tab=port/port=6666/
 Noah City Point,rtr-ncp-01,  120 ,0.66479,0.55%,38.84,10,,http://10.10.11.23/device/device=265/tab=port/port=12157/
 Repi Condominium,csw-rep-01,  90 ,24.36,27.07%,58.92,15,,http://10.10.11.23/device/device=187/tab=port/port=6621/
-Heart, ,  20 ,0,0%,0,0,,
-Jemmo management,olt-jmc-01,  10 ,0,0%,0,0,,
+Heart ICS, ,  20 ,0,0%,0,0,,
+Jemo 2 Condominium,olt-jmc-01,  10 ,0,0%,0,0,,
 Ronali Hotel,ron-rtr-01,  84 ,23.71,28.23%,83.74,30,,http://10.10.11.23/device/device=41/tab=port/port=1210/
-Ropack,rop-rtr-01,  105 ,27.74,26.42%,70.28,0,,http://10.10.11.23/device/device=42/tab=port/port=1218/
-Sabit,sab-rtr-01,  26 ,,,,,,
-Senga tera Condominium,rtr-seg-01,  10 ,1.55,15.50%,9.80,10,,http://10.10.11.23/device/device=289/tab=port/port=13511/
-Summit Condo,ncs5k-smt-01 10G Link,"  6,140 ","3,250",52.93%,"  7,360 ",10,,http://10.10.11.23/device/device=178/tab=port/port=14257/
+Ropack & CCD Real Estate,rop-rtr-01,  105 ,27.74,26.42%,70.28,0,,http://10.10.11.23/device/device=42/tab=port/port=1218/
+Sabit Building,sab-rtr-01,  26 ,,,,,,
+Sengatera 40/60 Condominium,rtr-seg-01,  10 ,1.55,15.50%,9.80,10,,http://10.10.11.23/device/device=289/tab=port/port=13511/
+Summit Condominium,ncs5k-smt-01 10G Link,"  6,140 ","3,250",52.93%,"  7,360 ",10,,http://10.10.11.23/device/device=178/tab=port/port=14257/
 Tsehay Real Estate,ncs5k-tsh-01 10G Link,"  6,140 ","3,260",53.09%,"  6,190 ",150,,http://10.10.11.23/device/device=244/tab=port/port=10748/
-Tulu Dimtu project-12,csw-td2-01,  10 ,,,,,,
-Warka Building,rtr-wrk-01,  130 ,4.07,3.13%,51.82,2,,http://10.10.11.23/device/device=217/tab=port/port=8543/
+Tulu Dimtu Project 12 Condominium,csw-td2-01,  10 ,,,,,,
+Warka Tower,rtr-wrk-01,  130 ,4.07,3.13%,51.82,2,,http://10.10.11.23/device/device=217/tab=port/port=8543/
 ITP,ncs5k-itp-01 10G Link,"  6,140 ","3,250",52.93%,"  6,200 ",50,,http://10.10.11.23/device/device=283/tab=port/port=13152/
