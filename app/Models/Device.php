@@ -20,6 +20,8 @@ class Device extends Model
         'bandwidth',
         'observium_device_id',
         'observium_port_id',
+        'type',
+        'description'
     ];
 
     public static $rules = [
@@ -28,5 +30,7 @@ class Device extends Model
         'bandwidth' => 'required|numeric',
         'observium_device_id' => 'required|integer',
         'observium_port_id' => 'required|integer',
+        'type' => 'required|integer',
+        'description' => 'string' 
     ];
 }

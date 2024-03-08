@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('test_observium_devices', function (Blueprint $table) {
-            $table->bigInteger('site_id');
             $table->string('site');
             $table->string('device_name')->primary();
             $table->double('bandwidth');
             $table->bigInteger('observium_device_id')->nullable();
             $table->bigInteger('observium_port_id')->nullable();
+            $table->string('type')->default('1');
+            $table->string('description')->nullable(); 
             $table->timestamps();
         });
         Schema::table('test_observium_devices', function (Blueprint $table) {
