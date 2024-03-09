@@ -311,4 +311,125 @@ class CsvController extends Controller
 
 
     }
+
+    public function getNullTallyBatches(){
+
+        $products = DB::table('products')
+        ->select('products.product_id', 'products.product_name','products.id')
+        ->leftJoin('tally_batches', 'products.id', '=', 'tally_batches.product_id')
+        ->whereNull('tally_batches.id')
+        ->get();
+
+        $res = [
+            "products_cnt" => count($products),
+            "products" => $products
+        ];
+
+        return response()->json($res, 200);
+
+    }
+
+    public function parseLostDevicesCsv(){
+
+        $filePath = '/home/eyouel/Documents/Eyouel/Observium/app/Http/obs/lost_devices.csv';
+
+        if (!file_exists($filePath)) {
+            echo "ERROR: File not found.\n";
+            return;
+        }
+
+        $fh = fopen($filePath, 'r');
+
+        $columns = 3;
+        while ($line = fgetcsv($fh, 1000, ',')) {
+            if (sizeof($line) != $columns) {
+                echo "ERROR: Invalid row\n";
+                print_r($line);
+                continue;
+            }
+
+            list($serial_no, $mac_address, $product_id) = $line;
+
+            $device = DB::table('devices')
+            ->where(function ($query) use ($serial_no, $mac_address) {
+                $query->where('devices.serial_no', $serial_no)
+                    ->orWhere(function ($query) use ($mac_address) {
+                        $query->whereNull('devices.serial_no')
+                            ->where('devices.mac_address', $mac_address);
+                    });
+            })
+            ->get();
+
+            $user_name = "59d51042-51ea-4d63-aafa-9d7c9a9ba5c8";
+            foreach($device as $dev){
+                if (count($device) > 1) {
+                    
+                }
+                $status = 0;
+                if($dev->status === 1){
+                    DB::table('device_activity')->insert([
+                        'fromType' => 2,
+                        'toType' => 10,
+                        "from" => $dev->store_id,
+                        "to" => 10,
+                        'device_id' => $dev->id,
+                        'created_by' => $user_name,
+                        'quantity' => 0,
+                    ]);
+                    try {
+                }catch (\Exception $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                }else if($dev->status === 2){
+                    DB::table('device_activity')->insert([
+                        'fromType' => 3,
+                        'toType' => 10,
+                        'from' => $dev->technician_id ? $dev->technician_id : $dev->dispatcher_id,
+                        'to' => 10,
+                        'device_id' => $dev->id,
+                        'created_by' => $user_name,
+                        'quantity' => 0,
+                    ]);
+
+                }else if($dev->status === 3){
+                    DB::table('device_activity')->insert([
+                        'fromType' => 6,
+                        'toType' => 10,
+                        'from' => $dev->technician_id ? $dev->technician_id : $dev->dispatcher_id,
+                        'to' => 10,
+                        'device_id' => $dev->id,
+                        'created_by' => $user_name,
+                        'quantity' => 0,
+                    ]);
+
+
+                }else if($dev->status === 4){
+                    DB::table('device_activity')->insert([
+                        'fromType' => 5,
+                        'toType' => 10,
+                        'from' => $dev->customer_id,
+                        'to' => 10,
+                        'device_id' => $dev->id,
+                        'created_by' => $user_name,
+                        'quantity' => 0,
+                    ]);
+
+
+                }else if($dev->status === 7){
+                    DB::table('device_activity')->insert([
+                        'fromType' => 9,
+                        'toType' => 10,
+                        'from' => $dev->store_id,
+                        'to' => 10,
+                        'device_id' => $dev->id,
+                        'created_by' => $user_name,
+                        'quantity' => 0,
+                    ]);
+                }
+            }
+            $result[] = $device;
+
+    }    
+
+    }
 }

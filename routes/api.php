@@ -25,6 +25,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// inventory lost devices 
+Route::get('/get_lost_devices', [CsvController::class , 'parseLostDevicesCsv']);
+Route::get('/get_null_tally', [CsvController::class , 'getNullTallyBatches']);
+
+
 
 // Observium Device logs 
 
