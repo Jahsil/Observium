@@ -362,11 +362,9 @@ class CsvController extends Controller
 
             $user_name = "59d51042-51ea-4d63-aafa-9d7c9a9ba5c8";
             foreach($device as $dev){
-                if (count($device) > 1) {
-                    
-                }
                 $status = 0;
                 if($dev->status === 1){
+                    try {
                     DB::table('device_activity')->insert([
                         'fromType' => 2,
                         'toType' => 10,
@@ -376,7 +374,6 @@ class CsvController extends Controller
                         'created_by' => $user_name,
                         'quantity' => 0,
                     ]);
-                    try {
                 }catch (\Exception $e) {
                     echo "Error: " . $e->getMessage();
                 }
@@ -426,6 +423,16 @@ class CsvController extends Controller
                         'quantity' => 0,
                     ]);
                 }
+
+                try {
+                    DB::table('devices')
+                        ->where('id', $dev->id)
+                        ->update(['status' => 9 ]);
+        
+                } catch (\Exception $e) {
+                }
+
+
             }
             $result[] = $device;
 
