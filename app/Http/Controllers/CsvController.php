@@ -436,7 +436,133 @@ class CsvController extends Controller
             }
             $result[] = $device;
 
-    }    
+        }    
+
+    }
+
+    public function parseDecSerial(){
+
+        $filePath = './app/Http/obs/dec_serial.csv';
+
+        if (!file_exists($filePath)) {
+            echo "ERROR: File not found.\n";
+            return;
+        }
+
+        $fh = fopen($filePath, 'r');
+        $user_name = "425ad9fa-6fdf-4768-b2c2-3a38a447b56f";
+
+        $columns = 7;
+        $first = true;
+        $count = 0; 
+        while ($line = fgetcsv($fh, 1000, ',')) {
+            if ($first) {
+                $first = false;
+                continue;
+            }
+
+            if (sizeof($line) != $columns) {
+                echo "ERROR: Invalid row\n";
+                print_r($line);
+                continue;
+            }
+
+            list($serial_no, $stat, $location_id, $dec_serial) = $line;
+
+
+            // get device from device table 
+            $device = DB::table('devices')
+                        ->where('serial_no', $serial_no)
+                        ->first();
+
+            $declaration = DB::table("declarations")
+            ->where("serial", $dec_serial)
+            ->first();
+
+            if ($declaration) {
+                if($device){
+                    if ($stat == "In store") {
+                        $devices = DB::table('devices')
+                            ->where('serial_no', $serial_no)
+                            ->update([
+                                "store_id" => $location_id,
+                                "dec_id" => $declaration->id,
+                                "status" => 1
+                            ]);
+    
+                            // Add to device activity 
+                            try {
+                                DB::table('device_activity')->insert([
+                                    'fromType' => $device->status + 1,
+                                    'toType' => 2,
+                                    "from" => $device->store_id,
+                                    "to" => $location_id,
+                                    'device_id' => $device->id,
+                                    'created_by' => $user_name,
+                                    'quantity' => 0,
+                                ]);
+                            }catch (\Exception $e) {
+                                echo "Error: " . $e->getMessage();
+                            }
+    
+                    } else {
+                        $devices = DB::table('devices')
+                            ->where('serial_no', $serial_no)
+                            ->update([
+                                "facility_id" => $location_id,
+                                "dec_id" => $declaration->id,
+                                "status" => 6
+                            ]);
+    
+                        // Add to device activity 
+                        try {
+                            DB::table('device_activity')->insert([
+                                'fromType' => $device->status + 1, 
+                                'toType' => 8,
+                                "from" => $device->store_id,
+                                "to" => $location_id,
+                                'device_id' => $device->id,
+                                'created_by' => $user_name,
+                                'quantity' => 0,
+                            ]);
+                        }catch (\Exception $e) {
+                            echo "Error: " . $e->getMessage();
+                        }
+    
+                        
+                    }
+                }
+            } else {
+                echo "Declaration not found for serial number: $dec_serial\n";
+            }
+
+            
+        }    
+        
+    }
+
+    public function getQuantity(){
+        
+        
+
+        $data = DB::table('batches as bt')
+            ->join('temp_devices as td', 'td.batch_id', '=', 'bt.id')
+            ->select('td.product_id', DB::raw('SUM(COALESCE(quantity, 1)) / 2 as total_quantity'))
+            ->where('bt.product_id', '=', 6)
+            ->where('added_to_store', '=', 1)
+            ->where('bt.dec_id', '=', 1)
+            ->groupBy('td.product_id')
+            ->get();
+
+        $data2 = DB::table('declaration_products')
+        ->select('quantity')
+        ->where('declarationId', '=', 6 )
+        ->where('productId', '=', 6)
+        ->get();
+
+        
+        
+
 
     }
 }
